@@ -6,14 +6,15 @@
 #
 default: &default
   adapter: postgresql
-  # host: localhost
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  encoding: unicode
+  host: localhost
   username: postgres
   password: 123
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>  
   timeout: 5000
 
 development:
-  <<: *default
+  <<: *default  
   database: myrecipes_development
 
 # Warning: The database defined as "test" will be erased and
@@ -25,9 +26,7 @@ test:
 
 production:
   <<: *default
-  encoding: utf8
   url: <%= ENV["DATABASE_URL"] %>
   database: myrecipes_production
   username: myrecipes
-  password: <%= ENV["MYRECIPES_DATABASE_PASSWORD"] %>
-  
+  password: <%= ENV["MYRECIPES_DATABASE_PASSWORD"] %> 
